@@ -3,15 +3,15 @@
 #### Simple Spring Boot RESTful Web Service (bonus points for OAuth2+OIDC Google login)
 
 Build a Spring Boot (v2.5.0) Java 8 Gradle project and push it to GitHub or BitBucket. The application should implement
-a secure RESTful web service that stores and displays information about subjects in a clinical trial.
+a secure RESTful web service that stores and displays information about subject in a clinical trial.
 
 1. Subject model should contain id, name, age, sex, occupation
 2. RESTful APIs:
-   a. retrieve all subjects b. get subject by id c. add new subject
-3. Prepopulate the database with 10 subjects (H2 database recommended for ease of development)
+   a. retrieve all subject b. get subject by id c. add new subject
+3. Prepopulate the database with 10 subject (H2 database recommended for ease of development)
 4. Build an extremely simple html frontend (we will not be judging your design skills):
-   a. Table/list showing existing subjects (paginated for extra credit!)
-   b. Form to create and save a new subject using RESTful API and ajax c. Automatic update of subjects table upon
+   a. Table/list showing existing subject (paginated for extra credit!)
+   b. Form to create and save a new subject using RESTful API and ajax c. Automatic update of subject table upon
    successful save
 5. Bonus: secure the html frontend with Oauth2
 
@@ -27,3 +27,8 @@ a secure RESTful web service that stores and displays information about subjects
 * [How to Initialize a Database with Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization)
 * [Spring Boot - Loading Initial Data - Stack Overflow](https://stackoverflow.com/questions/38040572/spring-boot-loading-initial-data)
 * [403 forbidden when I try to post to my spring api?](https://stackoverflow.com/questions/52449496/403-forbidden-when-i-try-to-post-to-my-spring-api?rq=1)
+* [Handling Form Submission](https://spring.io/guides/gs/handling-form-submission/)
+* [HTML Input Types](https://www.w3schools.com/html/html_form_input_types.asp)
+* [Springboot + thymeleaf displaying database contents in html table](https://stackoverflow.com/questions/45855614/springboot-thymeleaf-displaying-database-contents-in-html-table)
+* [DataTables](https://datatables.net/manual/installation)
+* [DataTable doesn't work (jQuery)](https://stackoverflow.com/questions/27873581/datatable-doesnt-work-jquery)

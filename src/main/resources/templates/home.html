@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	<title>Subjects</title>
+	<link href="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css"
+	      rel="stylesheet"
+	      type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+	<script charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"
+	        type="text/javascript"></script>
+	<script>
+		$(document).ready(function () {
+			$('#table1').DataTable({
+				responsive: true,
+				"pageLength": 5
+			});
+			$('.dataTables_length').addClass('bs-select');
+		});
+	</script>
+</head>
+<body>
+<span>Welcome, </span>
+<span th:text="${#authentication.principal.attributes.name}">Abdul Coder</span>
+<h1>List of Subjects</h1>
+<table id="table1">
+	<thead>
+	<tr>
+		<th>id</th>
+		<th>age</th>
+		<th>job</th>
+		<th>name</th>
+		<th>sex</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr th:each="subject: ${allSubjects}">
+		<td th:text="${subject.id}">0</td>
+		<td th:text="${subject.age}">27</td>
+		<td th:text="${subject.job}">Developer</td>
+		<td th:text="${subject.name}">Abdul</td>
+		<td th:text="${subject.sex}">M</td>
+	</tr>
+	</tbody>
+</table>
+<h1>Add a new Subject</h1>
+<form action="#" method="post" th:action="@{/home}" th:object="${subjectObject}">
+	<p>Age: <input required th:field="*{age}" type="number"/></p>
+	<p>Job: <input required th:field="*{job}" type="text"/></p>
+	<p>Name: <input required th:field="*{name}" type="text"/></p>
+	<p>Sex: </p>
+	<input id="M" name="*{sex}" required th:field="*{sex}" type="radio" value="M">
+	<label for="M">Male</label><br>
+	<input id="F" name="*{sex}" required th:field="*{sex}" type="radio" value="F">
+	<label for="F">Female</label><br>
+	<p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+</form>
+</body>
+</html>

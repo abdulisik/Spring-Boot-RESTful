@@ -7,32 +7,32 @@ import javax.persistence.Table;
 
 @Entity //mark class as an Entity
 @Table //defining class name as Table name
-public class Subjects {
+public class Subject {
 	@Id   //mark ID as primary key
 	@Column //defining ID as column name
 	private int id;
 	
-	@Column //defining name as column name
-	private String name;
-	
 	@Column //defining age as column name
 	private int age;
-	
-	@Column //defining sex as column name
-	private char sex;
 	
 	@Column //defining job as column name
 	private String job;
 	
-	public Subjects() {
+	@Column //defining name as column name
+	private String name;
+	
+	@Column //defining sex as column name
+	private String sex;
+	
+	public Subject() {
 	}
 	
-	public Subjects(int id, String name, int age, char sex, String job) {
+	public Subject(int id, int age, String job, String name, String sex) {
 		this.id = id;
-		this.name = name;
 		this.age = age;
-		this.sex = sex;
 		this.job = job;
+		this.name = name;
+		this.sex = sex;
 	}
 	
 	public int getId() {
@@ -43,14 +43,6 @@ public class Subjects {
 		this.id = id;
 	}
 	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
 	public int getAge() {
 		return age;
 	}
@@ -59,20 +51,39 @@ public class Subjects {
 		this.age = age;
 	}
 	
-	public char getSex() {
-		return sex;
-	}
-	
-	public void setSex(char sex) {
-		this.sex = sex;
-	}
-	
 	public String getJob() {
 		return job;
 	}
 	
 	public void setJob(String job) {
 		this.job = job;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getSex() {
+		return sex;
+	}
+	
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	
+	@Override
+	public String toString() {
+		return "{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", age=" + age +
+				", sex=" + sex +
+				", job='" + job + '\'' +
+				'}';
 	}
 }
 

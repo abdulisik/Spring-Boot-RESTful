@@ -12,29 +12,29 @@ public class SubjectsController {
 	@Autowired
 	private SubjectsService subjectsService;
 	
-	//creating a get mapping that retrieves all the subjects detail from the database
-	@GetMapping("/subjects")
-	public List<Subjects> getAllSubjects() {
-		return subjectsService.getAllSubjects();
+	@Autowired
+	private SubjectsRepository subjectsRepository;
+	
+	@GetMapping("/subjects") //getting all subjects records
+	public List<Subject> getAllSubjects() {
+		return subjectsService.findAll();
 	}
 	
-	//creating a get mapping that retrieves the detail of a specific subjects
-	@GetMapping("/subjects/{id}")
-	public Subjects getSubjects(@PathVariable("id") int id) {
-		return subjectsService.getSubjectsById(id);
+	@GetMapping("/subjects/{id}") //getting a specific record
+	public Subject getSubjectsById(@PathVariable int id) {
+		return subjectsRepository.findById(id).orElseGet(null);
 	}
 	
-	//creating delete mapping that deletes a specific subjects
-	@DeleteMapping("/subjects/{id}")
-	public void deleteSubjects(@PathVariable("id") int id) {
-		subjectsService.delete(id);
+	@PostMapping("/subjects") // updating a subject's detail
+	public int saveOrUpdate(@RequestBody Subject subject) {
+		subject.setId((int) (subjectsRepository.count() + 1));
+		return subjectsRepository.save(subject).getId();
 	}
 	
-	//creating post mapping that post the subjects detail in the database
-	@PostMapping("/subjects")
-	public int saveSubjects(@RequestBody Subjects subjects) {
-		subjectsService.saveOrUpdate(subjects);
-		return subjects.getId();
+	@DeleteMapping("/subjects/{id}") //deleting a specific record
+	public void delete(@PathVariable int id) {
+		subjectsRepository.deleteById(id);
 	}
+	
 }
 
